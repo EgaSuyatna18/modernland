@@ -5,6 +5,9 @@ use App\Http\Controllers\PageController;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TokoController;
+use App\Http\Controllers\BarangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +36,13 @@ route::get('/login/pembeli', [PageController::class, 'loginPembeli'])->middlewar
 route::get('/login/penjual', [PageController::class, 'loginPenjual'])->middleware('guest');
 route::get('/register/penjual', [PageController::class, 'registerPenjual'])->middleware('guest');
 route::get('/register/pembeli', [PageController::class, 'registerPembeli'])->middleware('guest');
+
+route::get('/dashboard', [DashboardController::class, 'index']);
+route::get('/dashboard/profile', [DashboardController::class, 'profile']);
+
+route::post('/toko/update/foto', [TokoController::class, 'updateFoto']);
+route::post('/toko/update', [TokoController::class, 'update']);
+
+route::get('/barang', [BarangController::class, 'index']);
+route::post('/barang', [BarangController::class, 'store']);
+route::get('/barang/{barang}/hapus', [BarangController::class, 'destroy']);
