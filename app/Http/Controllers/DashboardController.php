@@ -8,6 +8,10 @@ use App\Models\toko;
 class DashboardController extends Controller
 {
     function index() {
+        if(auth()->user()->role == 'pembeli') {
+            return redirect('/beranda');
+        }
+
         $toko = Toko::with('user')->where('user_id', auth()->user()->id)->first();
 
         if(!$toko) {

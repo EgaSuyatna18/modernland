@@ -46,3 +46,7 @@ route::post('/toko/update', [TokoController::class, 'update']);
 route::get('/barang', [BarangController::class, 'index']);
 route::post('/barang', [BarangController::class, 'store']);
 route::get('/barang/{barang}/hapus', [BarangController::class, 'destroy']);
+
+route::get('/beranda', [PageController::class, 'beranda']);
+route::get('/faq', [PageController::class, 'faq']);
+route::get('/panduan', [PageController::class, 'panduan']);

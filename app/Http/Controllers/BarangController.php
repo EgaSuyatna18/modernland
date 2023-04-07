@@ -9,6 +9,9 @@ use Storage;
 class BarangController extends Controller
 {
     function index() {
+        if(!auth()->user()->toko) {
+            return redirect('/dashboard/profile')->with('notify', 'Buat Toko Terlebih Dahulu.');
+        }
         return view('dashboard.barang', [
             'title' => 'Home | Penjual',
             'barangs' => Barang::where('toko_id', auth()->user()->toko->id)->get()
