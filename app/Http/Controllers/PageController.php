@@ -48,6 +48,14 @@ class PageController extends Controller
         ]);
     }
 
+    function berandaCari(Request $request) {
+        return view('beranda.index', [
+            'title' => 'Beranda',
+            'tokos' => Toko::where('nama_toko', 'LIKE', '%'.$request->input('key').'%')->limit(10)->get(),
+            'barangs' => Barang::with('toko')->where('nama_barang', 'LIKE', '%'.$request->input('key').'%')->limit(10)->get()
+        ]);
+    }
+
     function faq() {
         return view('beranda.faq', [
             'title' => 'FAQ'

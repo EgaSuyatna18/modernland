@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Toko;
+use App\Models\Barang;
 use Storage;
 
 class TokoController extends Controller
@@ -50,5 +51,29 @@ class TokoController extends Controller
         $toko->update($validated);
 
         return redirect('/dashboard/profile')->with('notify', 'Berhasil Mengubah Toko.');
+    }
+
+    function toko(Request $reqeust) {
+        return view('beranda.toko', [
+            'title' => 'Toko',
+            'tokos' => Toko::paginate(6),
+            'kategoris' => Toko::groupBy('kategori')->limit(20)->get()
+        ]);
+    }
+
+    function tokoDetail(Toko $toko) {
+        return view('beranda.tokoDetail', [
+            'title' => 'Detail Toko',
+            'toko' => $toko,
+            'barangs' => Barang::where('toko_id', $toko->id)->paginate(6)
+        ]);
+    }
+
+    function tokoCari(Request $request) {
+        return view('beranda.toko', [
+            'title' => 'Toko',
+            'tokos' => Toko::where('nama_toko', 'LIKE', '%'. $request->input('key') .'%')->paginate(6),
+            'kategoris' => Toko::groupBy('kategori')->limit(20)->get()
+        ]);
     }
 }

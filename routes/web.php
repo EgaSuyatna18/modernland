@@ -42,11 +42,17 @@ route::get('/dashboard/profile', [DashboardController::class, 'profile']);
 
 route::post('/toko/update/foto', [TokoController::class, 'updateFoto']);
 route::post('/toko/update', [TokoController::class, 'update']);
+route::get('/toko', [TokoController::class, 'toko']);
+route::get('/toko/{toko}/toko', [TokoController::class, 'tokoDetail']);
+route::get('/toko/{toko}/kategori', [TokoController::class, 'tokoDetail']);
+route::post('/toko/cari', [TokoController::class, 'tokoCari']);
 
 route::get('/barang', [BarangController::class, 'index']);
 route::post('/barang', [BarangController::class, 'store']);
 route::get('/barang/{barang}/hapus', [BarangController::class, 'destroy']);
+route::get('/barang/{barang}/pesan', [BarangController::class, 'pesan']);
 
 route::get('/beranda', [PageController::class, 'beranda']);
+route::post('/beranda/cari', [PageController::class, 'berandaCari']);
 route::get('/faq', [PageController::class, 'faq']);
 route::get('/panduan', [PageController::class, 'panduan']);

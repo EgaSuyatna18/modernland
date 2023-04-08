@@ -54,8 +54,9 @@
 </div>
 <div class="container-fluid d-flex justify-content-between my-3">
     <h3>Toko Rekomendasi</h3>
-    <a href="/toko/lihat" class="btn" style="background-color: #94ec8c;">Lihat Semua</a>
+    <a href="/toko" class="btn" style="background-color: #94ec8c;">Lihat Semua</a>
 </div>
+@if ($tokos->count())
 <div class="container-fluid text-center">
     <div class="row mx-auto my-auto justify-content-center">
         <div id="recipeCarousel" class="carousel slide tc" data-bs-ride="carousel">
@@ -72,24 +73,31 @@
                                     <img src="{{ ($toko->foto == '/assets/img/toko-default.png') ? '/assets/img/toko-default.png' : asset('/storage/' . $toko->foto) }}" class="w-50 img-fluid">
                                     <h3>{{ $toko->nama_toko }}</h3>
                                     <h5>Kategori: {{ $toko->kategori }}</h5>
+                                    <a href="/toko/{{ $toko->id }}/toko" class="btn btn-primary">Lihat</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
-            <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+            <a class="carousel-control-prev bg-success w-aut" style="width: 10%;" href="#recipeCarousel" role="button" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             </a>
-            <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+            <a class="carousel-control-next bg-success w-aut" style="width: 10%;" href="#recipeCarousel" role="button" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
             </a>
         </div>
     </div>		
 </div>
+@else
+<div class="container text-center">
+    <h1>Toko Tidak Ada</h1>
+</div>
+@endif
 
 <h3 class="my-3">Barang Rekomendasi</h3>
 
+@if ($barangs->count())
 <div class="container-fluid text-center" style="margin-bottom: 100px;">
     <div class="row mx-auto my-auto justify-content-center">
         <div id="barangCarousel" class="carousel slide bc" data-bs-ride="carousel">
@@ -103,26 +111,32 @@
                                 </div>
                                 <div class="card-img-overlay">
                                     <p>Barang ke-{{ $loop->index + 1 }}</p>
-                                    <img src="{{ asset('/storage/' . $barang->foto) }}" class="w-50 img-fluid">
+                                    <img src="{{ asset('/storage/' . $barang->foto) }}" class="w-25 img-fluid">
                                     <h3>{{ $barang->nama_barang }}</h3>
                                     <h5>Rp. {{ number_format($barang->harga) }}</h5>
                                     <h5>Toko: {{ $barang->toko->nama_toko }}</h5>
                                     <h5>Kategori: {{ $barang->kategori }}</h5>
+                                    <a href="/barang/{{ $barang->id }}/pesan" class="btn btn-primary">Pesan</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
-            <a class="carousel-control-prev bg-transparent w-aut" href="#barangCarousel" role="button" data-bs-slide="prev">
+            <a class="carousel-control-prev bg-success w-aut" style="width: 10%;" href="#barangCarousel" role="button" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             </a>
-            <a class="carousel-control-next bg-transparent w-aut" href="#barangCarousel" role="button" data-bs-slide="next">
+            <a class="carousel-control-next bg-success w-aut" style="width: 10%;" href="#barangCarousel" role="button" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
             </a>
         </div>
     </div>		
 </div>
+@else
+<div class="container text-center">
+    <h1>Barang Tidak Ada</h1>
+</div>
+@endif
 
 <!-- Modal -->
 <div class="modal fade" id="modalAlamat" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalAlamatLabel" aria-hidden="true">

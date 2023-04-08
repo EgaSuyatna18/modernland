@@ -40,4 +40,12 @@ class BarangController extends Controller
         $barang->delete();
         return redirect('/barang')->with('notify', 'Berhasil Menghapus Barang.');
     }
+
+    function pesan(Barang $barang) {
+        return view('beranda.pesan', [
+            'title' => 'Pesan',
+            'barang' => $barang,
+            'barangs' => Barang::inRandomOrder()->limit(8)->get()
+        ]);
+    }
 }
