@@ -1,6 +1,5 @@
 @extends('layouts.master4')
 @section('content')
-
 <style>
     @media (max-width: 767px) {
 		.carousel-inner .carousel-item > div {
@@ -98,7 +97,7 @@
 <h3 class="my-3">Barang Rekomendasi</h3>
 
 @if ($barangs->count())
-<div class="container-fluid text-center" style="margin-bottom: 100px;">
+<div class="container-fluid text-center">
     <div class="row mx-auto my-auto justify-content-center">
         <div id="barangCarousel" class="carousel slide bc" data-bs-ride="carousel">
             <div class="carousel-inner" role="listbox">

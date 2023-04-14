@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TokoController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\PesananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +58,18 @@ route::get('/beranda', [PageController::class, 'beranda']);
 route::post('/beranda/cari', [PageController::class, 'berandaCari']);
 route::get('/faq', [PageController::class, 'faq']);
 route::get('/panduan', [PageController::class, 'panduan']);
+
+route::get('/keranjang', [KeranjangController::class, 'keranjang']);
+route::post('/keranjang/{barang}/tambah', [KeranjangController::class, 'tambah']);
+route::post('/keranjang', [KeranjangController::class, 'beli']);
+route::get('/keranjang/hapus_semua', [KeranjangController::class, 'hapus_semua']);
+route::delete('/keranjang/{id}/hapus', [KeranjangController::class, 'hapus']);
+route::post('/keranjang/proses', [KeranjangController::class, 'proses']);
+route::get('/keranjang/barcode', [KeranjangController::class, 'barcode']);
+route::get('/keranjang/pesanan', [KeranjangController::class, 'pesanan']);
+
+route::get('/pesanan/baru', [PesananController::class, 'pesananBaru']);
+route::get('/pesanan/{baru}/siap', [PesananController::class, 'siap']);
+route::get('/pesanan/siap', [PesananController::class, 'pesananSiap']);
+route::get('/pesanan/{siap}/selesai', [PesananController::class, 'selesai']);
+route::get('/pesanan/selesai', [PesananController::class, 'pesananSelesai']);

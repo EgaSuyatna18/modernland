@@ -41,10 +41,18 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-cubes"></i></div>
                                 Barang
                             </a>
-                            <a class="nav-link" href="/penjualan">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePesanan" aria-expanded="false" aria-controls="collapsePesanan">
                                 <div class="sb-nav-link-icon"><i class="fas fa-dollar"></i></div>
-                                Penjualan
+                                    Pesanan
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
+                            <div class="collapse" id="collapsePesanan" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="/pesanan/baru">Pesanan Baru</a>
+                                    <a class="nav-link" href="/pesanan/siap">Pesanan Siap</a>
+                                    <a class="nav-link" href="/pesanan/selesai">Pesanan Selesai</a>
+                                </nav>
+                            </div>
                     </div>
                 </nav>
             </div>

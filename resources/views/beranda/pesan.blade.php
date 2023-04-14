@@ -42,7 +42,7 @@ input::-webkit-inner-spin-button {
   position: relative;
 }
 
-.input-group .quantity-field {
+.input-group .jumlah-field {
   position: relative;
   height: 38px;
   left: -6px;
@@ -107,12 +107,12 @@ input[type="number"] {
         </div>
         <div class="col-4 border border-1 rounded">
             <p>Atur Pesanan</p>
-            <form action="/barang/{{ $barang->id }}/keranjang" method="post">
+            <form action="/keranjang/{{ $barang->id }}/tambah" method="post">
                 @csrf
                 <div class="input-group">
-                    <input type="button" value="-" class="button-minus" data-field="quantity">
-                    <input type="number" step="1" max="" value="1" name="quantity" class="quantity-field">
-                    <input type="button" value="+" class="button-plus" data-field="quantity">
+                    <input type="button" value="-" class="button-minus" data-field="jumlah">
+                    <input type="number" step="1" max="" value="1" name="jumlah" class="jumlah-field">
+                    <input type="button" value="+" class="button-plus" data-field="jumlah">
                 </div>
                 <div class="mb-3">
                     <label>Catatan</label>

@@ -5,7 +5,6 @@
         <h1>Create Account</h1>
         Sebagai {{ $login }}
     </div>
-
     <div class="container w-50">
         <form action="/register" method="post">
             @csrf
